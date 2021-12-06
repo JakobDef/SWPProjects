@@ -5,23 +5,16 @@ import at.jakob.games.wintergame.Strategy.MoveStrategy;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
-public class CircleActor implements Actor {
-    private MoveStrategy ms;
+public class CircleActor extends AbstractActor {
 
 
     public CircleActor(MoveStrategy ms) {
-        super();
-        this.ms = ms;
+        super(ms);
     }
 
     @Override
     public void render(Graphics graphics) {
         graphics.drawOval(ms.getX(), ms.getY(), 50,50);
-    }
-
-    @Override
-    public void update(GameContainer gc, int delta) {
-        ms.update(delta);
-    }
+    };
 
 }
