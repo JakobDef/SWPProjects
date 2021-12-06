@@ -1,4 +1,4 @@
-package at.jakob.games.wintergame;
+package at.jakob.games.wintergame.Actors;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

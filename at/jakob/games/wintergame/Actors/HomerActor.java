@@ -1,9 +1,7 @@
 package at.jakob.games.wintergame.Actors;
 
-import at.jakob.games.wintergame.Actor;
 import org.newdawn.slick.GameContainer;
-
-import java.awt.*;
+import org.newdawn.slick.Graphics;
 
 public class HomerActor implements Actor {
 

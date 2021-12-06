@@ -1,22 +1,16 @@
 package at.jakob.games.wintergame.Actors;
 
-import at.jakob.games.wintergame.Strategy.MoveRight;
 import at.jakob.games.wintergame.Strategy.MoveStrategy;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
-public class CircleActor implements Actor {
+public class RectActor implements Actor {
     private MoveStrategy ms;
 
 
-    public CircleActor(MoveStrategy ms) {
+    public RectActor(MoveStrategy ms) {
         super();
         this.ms = ms;
-    }
-
-    @Override
-    public void render(Graphics graphics) {
-        graphics.drawOval(ms.getX(), ms.getY(), 50,50);
     }
 
     @Override
@@ -24,4 +18,8 @@ public class CircleActor implements Actor {
         ms.update(delta);
     }
 
+    @Override
+    public void render(Graphics graphics) {
+        graphics.drawRect(ms.getX(), ms.getY(), 50, 50);
+    }
 }
