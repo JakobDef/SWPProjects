@@ -20,18 +20,29 @@ public class MainGame extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
+        PlayerActor player = new PlayerActor();
+
         MoveStrategy mr1 = new MoveRight(0,0, 0.3f);
         MoveStrategy mr2 = new MoveLeft(500,100, 0.1f);
         MoveStrategy mr3 = new MoveLeft(500,200, 0.2f);
 
-        this.actors.add(new RectActor(mr3));
-        this.actors.add(new OvalActor(100, 400, OvalActor.direction.right));
+        OvalActor o1 = new OvalActor(100, 400, OvalActor.direction.right);
+        SnowflakeActor o2 = new SnowflakeActor(SnowflakeActor.size.medium);
+        RectActor o3 = new RectActor(mr3);
+
+        this.actors.add(o3);
+        this.actors.add(o1);
         this.actors.add(new CircleActor(mr1));
         this.actors.add(new CircleActor(mr2));
         this.actors.add(new SnowflakeActor(SnowflakeActor.size.small));
         this.actors.add(new SnowflakeActor(SnowflakeActor.size.big));
-        this.actors.add(new SnowflakeActor(SnowflakeActor.size.medium));
+        this.actors.add(o2);
         this.actors.add(new SnowflakeActor(SnowflakeActor.size.small));
+        this.actors.add(player);
+
+        player.addObserver(o1);
+        player.addObserver(o2);
+        player.addObserver(o3);
 
     }
 

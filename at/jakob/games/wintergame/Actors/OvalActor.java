@@ -1,12 +1,15 @@
 package at.jakob.games.wintergame.Actors;
 
+import at.jakob.games.wintergame.Observer.Observer;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
-public class OvalActor implements Actor {
+public class OvalActor implements Actor, Observer {
     private int x;
     private int y;
     private direction dir;
+    private Color color;
 
     public enum direction {
         right, left
@@ -31,6 +34,13 @@ public class OvalActor implements Actor {
 
     @Override
     public void render(Graphics graphics) {
+        graphics.setColor(this.color);
         graphics.drawOval(this.x, this.y, 80, 50);
+        graphics.setColor(Color.white);
     }
+
+    public void inform(){
+        this.color = Color.red;
+    }
+
 }
