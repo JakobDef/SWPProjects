@@ -2,10 +2,12 @@ package at.jakob.games.wintergame;
 
 import at.jakob.games.wintergame.Actors.*;
 import at.jakob.games.wintergame.Factory.RandomActorFactory;
+import at.jakob.games.wintergame.Singleton.CounterSingleton;
 import at.jakob.games.wintergame.Strategy.MoveLeft;
 import at.jakob.games.wintergame.Strategy.MoveRight;
 import at.jakob.games.wintergame.Strategy.MoveStrategy;
 import org.newdawn.slick.*;
+import org.w3c.dom.css.Counter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,16 @@ public class MainGame extends BasicGame {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
+
+        CounterSingleton cs1 = CounterSingleton.getInstance();
+        CounterSingleton cs2 = CounterSingleton.getInstance();
+
+        cs1.increaseCounter();
+        cs1.increaseCounter();
+
+        System.out.println(cs1.getCounter());
+        System.out.println(cs2.getCounter());
+
         this.actors = new ArrayList<>();
         PlayerActor player = new PlayerActor();
         RandomActorFactory factory = new RandomActorFactory();
