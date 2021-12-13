@@ -1,6 +1,7 @@
 package at.jakob.games.wintergame;
 
 import at.jakob.games.wintergame.Actors.*;
+import at.jakob.games.wintergame.Factory.RandomActorFactory;
 import at.jakob.games.wintergame.Strategy.MoveLeft;
 import at.jakob.games.wintergame.Strategy.MoveRight;
 import at.jakob.games.wintergame.Strategy.MoveStrategy;
@@ -21,12 +22,18 @@ public class MainGame extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
         PlayerActor player = new PlayerActor();
+        RandomActorFactory factory = new RandomActorFactory();
+        this.actors.add(player);
 
         MoveStrategy mr1 = new MoveRight(0,0, 0.3f);
         MoveStrategy mr2 = new MoveLeft(500,100, 0.1f);
         MoveStrategy mr3 = new MoveLeft(500,200, 0.2f);
 
-        OvalActor o1 = new OvalActor(100, 400, OvalActor.direction.right);
+        for(int i = 0; i < 10; i++){
+            this.actors.add(factory.getRandomActor());
+        }
+
+        /*OvalActor o1 = new OvalActor(100, 400, OvalActor.direction.right);
         SnowflakeActor o2 = new SnowflakeActor(SnowflakeActor.size.medium);
         RectActor o3 = new RectActor(mr3);
 
@@ -38,11 +45,10 @@ public class MainGame extends BasicGame {
         this.actors.add(new SnowflakeActor(SnowflakeActor.size.big));
         this.actors.add(o2);
         this.actors.add(new SnowflakeActor(SnowflakeActor.size.small));
-        this.actors.add(player);
 
         player.addObserver(o1);
         player.addObserver(o2);
-        player.addObserver(o3);
+        player.addObserver(o3);*/
 
     }
 
