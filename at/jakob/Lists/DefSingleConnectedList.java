@@ -23,9 +23,9 @@ public class DefSingleConnectedList implements DefList {
     }
 
     @Override
-    public void remove(int index) {
-        if(index >= this.size) {
-            throw new IndexOutOfBoundsException();
+    public boolean removeAt(int index) {
+        if(index >= this.size || index < 0) {
+            return false;
         }
 
         Node pointer = root;
@@ -35,6 +35,31 @@ public class DefSingleConnectedList implements DefList {
         }
 
         pointer.setNext(pointer.getNext().getNext());
+
+        this.size--;
+        return true;
+
+    }
+
+    @Override
+    public boolean remove(int value) {
+        Node pointer = root;
+        if(pointer.getValue() == value) {
+            this.root = pointer.getNext();
+            this.size--;
+            return true;
+        }
+
+        for(int i = 0; i < this.size; i++){
+            if(pointer.getNext() == null) return false;
+            else if(pointer.getNext().getValue() == value){
+                pointer.setNext(pointer.getNext().getNext());
+                break;
+            }
+            pointer = pointer.getNext();
+        }
+        this.size--;
+        return true;
 
     }
 
@@ -50,4 +75,29 @@ public class DefSingleConnectedList implements DefList {
         }
         return pointer.getValue();
     }
+
+    @Override
+    public boolean contains(int value) {
+
+        Node pointer = this.root;
+
+        for(int i = 0; i < this.size; i++){
+            if(pointer.getValue() == value) return true;
+            pointer = pointer.getNext();
+        }
+
+        return false;
+    }
+
+    @Override
+    public String toString(){
+        String string = "";
+        Node pointer = this.root;
+        for(int i = 0; i < this.size; i++){
+            string += pointer.getValue() + " ";
+            pointer = pointer.getNext();
+        }
+        return string;
+    }
+
 }

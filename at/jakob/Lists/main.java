@@ -13,12 +13,13 @@ public class main {
         list.add(0);
 
         System.out.println(list.get(3));
+        System.out.println(list.toString());
+        list.remove(0);
+        list.removeAt(1);
+        System.out.println(list.toString());
+        System.out.println(list.get(2));
+        System.out.println(list.contains(6));
 
-        list.remove(4);
-
-        System.out.println(list.get(3));
-
-        System.out.println(list.get(5));
 
     }
 
